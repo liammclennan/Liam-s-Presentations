@@ -1,0 +1,145 @@
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-07-25 15:26:31) [GET]
+  [4;36;1mSQL (255.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Completed in 479ms (View: 75, DB: 255) | 200 OK [http://localhost/rails/info/properties]
+  [4;36;1mSQL (301.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (25.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (390.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (29.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (200.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreatePosts (20100725052931)
+  [4;35;1mSQL (221.0ms)[0m   [0mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "published" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100725052931')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mPRAGMA index_list("posts")[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-25 15:30:18) [GET]
+
+ActionController::RoutingError (No route matches "/post" with {:method=>:get}):
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/routing/recognition_optimisation.rb:66:in `recognize_path'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/routing/route_set.rb:442:in `recognize'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/routing/route_set.rb:437:in `call'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:87:in `dispatch'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:121:in `_call'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:29:in `[]'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:29:in `call'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:9:in `cache'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:28:in `call'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/string_coercion.rb:25:in `call'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/params_parser.rb:15:in `call'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/session/cookie_store.rb:99:in `call'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/failsafe.rb:26:in `call'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:114:in `call'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/reloader.rb:34:in `run'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:108:in `call'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/rails-2.3.8/lib/rails/rack/static.rb:31:in `call'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ironruby/gems/1.8/gems/rails-2.3.8/lib/rails/rack/log_tailer.rb:17:in `call'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Program Files (x86)/IronRuby 1.0v4/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  IronRuby.Libraries:0:in `RubyThreadStart'
+  IronRuby.Libraries:0:in `<CreateThread>b__0'
+  mscorlib:0:in `ThreadStart_Context'
+  mscorlib:0:in `Run'
+  mscorlib:0:in `Run'
+  mscorlib:0:in `ThreadStart'
+
+Rendering rescues/layout (not_found)
+
+
+Processing PostsController#index (for 127.0.0.1 at 2010-07-25 15:30:22) [GET]
+  [4;36;1mPost Load (263.0ms)[0m   [0;1mSELECT * FROM "posts" [0m
+Rendering template within layouts/posts
+Rendering posts/index
+Completed in 584ms (View: 222, DB: 263) | 200 OK [http://localhost/posts]
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-07-25 15:30:28) [GET]
+Rendering template within layouts/posts
+Rendering posts/new
+Completed in 315ms (View: 208, DB: 0) | 200 OK [http://localhost/posts/new]
+
+
+Processing PostsController#create (for 127.0.0.1 at 2010-07-25 15:30:41) [POST]
+  Parameters: {"authenticity_token"=>"K0Uozveo0+2Ccg3CDCmyUECaBVU1ve+oGn9InM0MLUg=", "post"=>{"title"=>"Hello", "body"=>"world", "published"=>"1"}, "commit"=>"Create"}
+  [4;35;1mPost Create (186.0ms)[0m   [0mINSERT INTO "posts" ("title", "body", "published", "created_at", "updated_at") VALUES('Hello', 'world', 't', '2010-07-25 05:30:41', '2010-07-25 05:30:41')[0m
+Redirected to http://localhost:3000/posts/1
+Completed in 346ms (DB: 186) | 302 Found [http://localhost/posts]
+
+
+Processing PostsController#show (for 127.0.0.1 at 2010-07-25 15:30:41) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPost Load (11.0ms)[0m   [0;1mSELECT * FROM "posts" WHERE ("posts"."id" = 1) [0m
+Rendering template within layouts/posts
+Rendering posts/show
+Completed in 134ms (View: 82, DB: 11) | 200 OK [http://localhost/posts/1]
+
+
+Processing PostsController#edit (for 127.0.0.1 at 2010-07-25 15:30:45) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPost Load (1.0ms)[0m   [0mSELECT * FROM "posts" WHERE ("posts"."id" = 1) [0m
+Rendering template within layouts/posts
+Rendering posts/edit
+Completed in 169ms (View: 138, DB: 1) | 200 OK [http://localhost/posts/1/edit]
+
+
+Processing PostsController#update (for 127.0.0.1 at 2010-07-25 15:30:53) [PUT]
+  Parameters: {"authenticity_token"=>"K0Uozveo0+2Ccg3CDCmyUECaBVU1ve+oGn9InM0MLUg=", "post"=>{"title"=>"Hello", "body"=>"worldafdssadf", "published"=>"1"}, "commit"=>"Update", "id"=>"1"}
+  [4;36;1mPost Load (1.0ms)[0m   [0;1mSELECT * FROM "posts" WHERE ("posts"."id" = 1) [0m
+  [4;35;1mPost Update (161.0ms)[0m   [0mUPDATE "posts" SET "body" = 'worldafdssadf', "updated_at" = '2010-07-25 05:30:53' WHERE "id" = 1[0m
+Redirected to http://localhost:3000/posts/1
+Completed in 335ms (DB: 162) | 302 Found [http://localhost/posts/1]
+
+
+Processing PostsController#show (for 127.0.0.1 at 2010-07-25 15:30:54) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPost Load (1.0ms)[0m   [0;1mSELECT * FROM "posts" WHERE ("posts"."id" = 1) [0m
+Rendering template within layouts/posts
+Rendering posts/show
+Completed in 65ms (View: 33, DB: 1) | 200 OK [http://localhost/posts/1]
+
+
+Processing PostsController#index (for 127.0.0.1 at 2010-07-25 15:30:57) [GET]
+  [4;35;1mPost Load (2.0ms)[0m   [0mSELECT * FROM "posts" [0m
+Rendering template within layouts/posts
+Rendering posts/index
+Completed in 137ms (View: 75, DB: 2) | 200 OK [http://localhost/posts]
+
+
+Processing PostsController#destroy (for 127.0.0.1 at 2010-07-25 15:31:00) [DELETE]
+  Parameters: {"authenticity_token"=>"K0Uozveo0+2Ccg3CDCmyUECaBVU1ve+oGn9InM0MLUg=", "id"=>"1"}
+  [4;36;1mPost Load (1.0ms)[0m   [0;1mSELECT * FROM "posts" WHERE ("posts"."id" = 1) [0m
+  [4;35;1mPost Destroy (148.0ms)[0m   [0mDELETE FROM "posts" WHERE "id" = 1[0m
+Redirected to http://localhost:3000/posts
+Completed in 244ms (DB: 149) | 302 Found [http://localhost/posts/1]
+
+
+Processing PostsController#index (for 127.0.0.1 at 2010-07-25 15:31:01) [GET]
+  [4;36;1mPost Load (1.0ms)[0m   [0;1mSELECT * FROM "posts" [0m
+Rendering template within layouts/posts
+Rendering posts/index
+Completed in 40ms (View: 15, DB: 1) | 200 OK [http://localhost/posts]
