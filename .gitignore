@@ -28,3 +28,7 @@ _ReSharper.*
 *.cache
 
 *.user
+
+lint.db
+
+~*

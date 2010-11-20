@@ -24,13 +24,14 @@ namespace StoryQDemo.Test
                 .Given(AUserWithUsername, "stevesmith")
                 .And(Password, "elvish")
                 .When(TheUserSignsInWith, "stevesmith", "elvish")
-                .Then(TheyAuthenticateSuccessfully).ExecuteWithReport(MethodBase.GetCurrentMethod());
+                .Then(TheyAuthenticateSuccessfully)
+                    .ExecuteWithReport(MethodBase.GetCurrentMethod());
         }
 
         [Test]
         public void authentication_failure()
         {
-
+            throw new NotImplementedException();
         }
 
         private void AUserWithUsername(string username)
@@ -49,7 +50,8 @@ namespace StoryQDemo.Test
             #endregion
         }
 
-        private void TheUserSignsInWith(string username, string password)
+        private void TheUserSignsInWith(string username, 
+            string password)
         {
             throw new NotImplementedException();
             #region Live Coding Sucks
