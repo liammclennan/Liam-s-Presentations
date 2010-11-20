@@ -1,0 +1,106 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using NSubstitute;
+using NUnit.Framework;
+using StoryQ;
+using StoryQDemo.Core;
+
+namespace StoryQDemo.Test
+{
+    [TestFixture]
+    public class AuthenticationBehaviour
+    {
+        private Feature authenticate = new Story("Authenticate")
+            .InOrderTo("access secure resources")
+            .AsA("unauthenticated user")
+            .IWant("to sign in");
+
+        private User user;
+        private bool result;
+
+        [Test]
+        public void authenticate_successfully()
+        {
+            authenticate.WithScenario("authenticate successfully")
+                .Given(AUserWithUsername, "stevesmith")
+                .And(Password, "elvish")
+                .When(TheUserSignsInWith, "stevesmith", "elvish")
+                .Then(TheyAuthenticateSuccessfully).ExecuteWithReport(MethodBase.GetCurrentMethod());
+        }
+
+        [Test]
+        public void authentication_failure()
+        {
+            authenticate.WithScenario("authentication failure")
+                .Given(AUserWithUsername, "stevesmith")
+                .And(Password, "elvish")
+                .When(TheUserSignsInWith, "stevesmith", "password")
+                .Then(AuthenticationFails).ExecuteWithReport();
+        }
+
+        private void AUserWithUsername(string username)
+        {
+            user = new User {UserName = username};
+        }
+
+        private void Password(string password)
+        {
+            user.Password = password;
+        }
+
+        private void TheUserSignsInWith(string username, string password)
+        {
+            var dataService = Substitute.For<IDataService>();
+            dataService.GetUserByUserName(username).Returns(user);
+            var authenticationService = new AuthenticationService(dataService);
+            result = authenticationService.IsValidCredentials(username, password);
+        }
+
+        private void TheyAuthenticateSuccessfully()
+        {
+            Assert.IsTrue(result);
+        }
+
+        private void AuthenticationFails()
+        {
+            Assert.IsFalse(result);
+        }
+    }
+
+    internal interface IAuthenticationService
+    {
+        bool IsValidCredentials(string username, string password);
+    }
+
+    internal class AuthenticationService : IAuthenticationService
+    {
+        private readonly IDataService dataService;
+
+        public AuthenticationService(IDataService dataService)
+        {
+            this.dataService = dataService;
+        }
+
+        public bool IsValidCredentials(string username, string password)
+        {
+            var user = dataService.GetUserByUserName(username);
+            return user.UserName == username
+                   && user.Password == password;
+        }
+    }
+
+    public interface IDataService
+    {
+        User GetUserByUserName(string username);
+    }
+
+    public class User
+    {
+        public string UserName { get; set; }
+
+        public string Password { get; set; }
+    }
+}
